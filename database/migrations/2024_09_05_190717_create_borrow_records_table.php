@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('borrow_records', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('book_id')->constrained('books');
+            $table->dateTime('borrowed_at');
+            $table->dateTime('due_at');
+            $table->dateTime('returned_at')->nullable();
             $table->timestamps();
         });
     }
